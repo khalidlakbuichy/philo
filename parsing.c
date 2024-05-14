@@ -6,16 +6,11 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:47:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/13 16:45:40 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/14 07:32:36 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-static int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
 
 static int	is_white(int c)
 {
@@ -27,18 +22,20 @@ static int	is_white(int c)
 
 static int	check_int_overflow(char *arg)
 {
-	if (ft_strlen(nbr) < MAX_INT_LEN)
+	while (*arg == '0')
+		arg++;
+	if (ft_strlen(arg) < MAX_INT_LEN)
 		return (0);
-	if (ft_strlen(nbr) > MAX_INT_LEN)
+	if (ft_strlen(arg) > MAX_INT_LEN)
 		return (1);
-	if (ft_strlen(nbr) == MAX_INT_LEN)
+	if (ft_strlen(arg) == MAX_INT_LEN)
 	{
-		if (ft_strncmp(nbr, INT_MAX, MAX_INT_LEN) <= 0)
+		if (ft_strncmp(arg, INT_MAX, MAX_INT_LEN) <= 0)
 			return (0);
 	}
 	return (1);
 }
-int	is_valid_arg(char *arg)
+static int	is_valid_arg(char *arg)
 {
 	int	i;
 
@@ -56,4 +53,17 @@ int	is_valid_arg(char *arg)
 		i++;
 	}
 	return (true);
+}
+
+void	parsing_input(int ac, char **av)
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (!is_valid_arg(av[i]))
+			ft_error("Error: invalid argument\n");
+		i++;
+	}
 }

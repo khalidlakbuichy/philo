@@ -6,11 +6,11 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:05:59 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/13 16:52:21 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/14 07:28:48 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
 static int	is_white(int c)
 {

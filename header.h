@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/13 16:32:18 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:51:21 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define HEADER_H
 
 /*  Includes  */
-# include <limits.h>
 # include <pthread.h>
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/time.h>
 # include <unistd.h>
 
 /*  Defines  */
@@ -27,40 +27,50 @@
 # define INT_MAX "2147483647"
 
 /* TYPEDEFS */
-typedef struct s_data	t_data;
-typedef struct s_philo	t_philo;
+typedef struct s_data		t_data;
+typedef struct s_philo		t_philo;
+typedef struct s_forks_s	t_forks;
 
 /* STRCUTS */
 
-struct					s_data
+struct						forks_s
 {
-	size_t				nb_philo;
-	size_t				time_to_die;
-	size_t				time_to_eat;
-	size_t				time_to_sleep;
-	size_t				nb_meals;
+	int						id;
+	pthread_mutex_t			mutex;
 };
 
-struct					s_philo
+struct						s_data
 {
-	int					id;
-	pthread_t			thread;
-	pthread_mutex_t		*left_fork;
-	pthread_mutex_t		*right_fork;
-	pthread_mutex_t		*print;
-	int					*stop;
-	int					*meals;
-	int					*last_meal;
-	int					*nb_philo;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
+	size_t					nb_philo;
+	size_t					time_to_die;
+	size_t					time_to_eat;
+	size_t					time_to_sleep;
+	int						nb_meals;
+	t_philo					**philos;
+	t_forks					**forks;
+};
+
+struct						s_philo
+{
+	int						id;
+	pthread_t				thread;
+	pthread_mutex_t			*left_fork;
+	pthread_mutex_t			*right_fork;
+	pthread_mutex_t			*print;
+	int						*stop;
+	int						meals;
+	time_t					*last_meal;
+	int						nb_meals;
 };
 
 /* Prototypes */
-int						ft_atoi_enhanced(char *str, int *flag);
-void					parsing_input(int ac, char **av);
-size_t					ft_strlen(char *str);
-void					ft_error(char *msg);
+void						parsing_input(int ac, char **av);
+size_t						ft_strlen(char *str);
+void						ft_error(char *msg);
+int							ft_atoi(const char *str);
+t_data						*init(int ac, char **av);
+int							ft_strncmp(const char *s1, const char *s2,
+								size_t n);
+int							ft_isdigit(int c);
 
 #endif /* HEADER_H */

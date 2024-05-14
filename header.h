@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/14 15:51:21 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:31:21 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ struct						forks_s
 
 struct						s_data
 {
-	size_t					nb_philo;
+	size_t					nb_philos;
 	size_t					time_to_die;
 	size_t					time_to_eat;
 	size_t					time_to_sleep;
@@ -54,13 +54,14 @@ struct						s_philo
 {
 	int						id;
 	pthread_t				thread;
-	pthread_mutex_t			*left_fork;
-	pthread_mutex_t			*right_fork;
+	pthread_mutex_t			*first_fork;
+	pthread_mutex_t			*second_fork;
 	pthread_mutex_t			*print;
 	int						*stop;
 	int						meals;
 	time_t					*last_meal;
 	int						nb_meals;
+	t_data					*data;
 };
 
 /* Prototypes */

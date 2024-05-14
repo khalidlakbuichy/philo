@@ -6,11 +6,22 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/14 15:54:57 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:35:48 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void	assign_forks(t_philo *philo, int philo_pos)
+{
+	philo->first_fork = philo->data->forks[philo_pos];
+	philo->second_fork = philo->data->forks[(philo_pos + 1) % data.nb_philos];
+	if (philo->id % 2)
+	{
+		philo->first_fork = philo->data->forks[(philo_pos + 1) % data.nb_philos];
+		philo->second_fork = philo->data->forks[philo_pos];
+	}
+}
 
 t_forks	**init_forks(void)
 {
@@ -26,7 +37,7 @@ t_forks	**init_forks(void)
 		forks[i] = (t_forks *)malloc(sizeof(t_forks));
 		if (!forks[i])
 			ft_error("Error: malloc failed\n");
-		forks[i]->id = i + 1;
+		forks[i]->id = i;
 		pthread_mutex_init(&forks[i]->mutex, NULL);
 	}
 	return (forks);
@@ -45,10 +56,9 @@ t_philo	*init_philos(t_data *data)
 		if (!philos[i])
 			ft_error("Error: malloc failed\n");
 		philos[i]->id = i + 1;
-		philos[i]->left_fork = &data->forks[i];
-		philos[i]->right_fork = &data->forks[(i + 1) % data->nb_philo];
 		philos[i]->print = &data->print;
 		philos[i]->stop = &data->stop;
+		assign_forks(philos[i], i);
 	}
 	return (philos);
 }
@@ -70,5 +80,6 @@ t_data	*init(int ac, char **av)
 		data->nb_meals = -1;
 	data->forks = init_forks(data);
 	data->philos = init_philos(data);
+	assing_forks(data);
 	return (data);
 }

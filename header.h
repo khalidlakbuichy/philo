@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/14 16:31:21 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/17 07:32:49 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ struct						s_data
 	size_t					time_to_die;
 	size_t					time_to_eat;
 	size_t					time_to_sleep;
-	int						nb_meals;
+	int						max_meals;
 	t_philo					**philos;
 	t_forks					**forks;
 };

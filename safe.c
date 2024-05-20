@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   safe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:47:31 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/15 11:37:29 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:58:56 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*safe_malloc(size_t size)
 {
-	void *ptr;
+	void	*ptr;
 
 	ptr = malloc(size);
 	if (!ptr)
@@ -22,8 +22,8 @@ void	*safe_malloc(size_t size)
 	return (ptr);
 }
 
-void safe_mutex(pthread_mutex_t *mutex)
+void	safe_mutex(pthread_mutex_t *mutex)
 {
-    if (pthread_mutex_init(mutex, NULL))
-        ft_error("Error: mutex init failed\n");
+	if (pthread_mutex_init(mutex, NULL))
+		ft_error("Error: mutex init failed\n");
 }

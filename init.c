@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 12:14:22 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:34:25 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	assign_forks(t_philo *philo, int philo_pos)
 {
-	size_t nb_philos;
-	
+	size_t	nb_philos;
+
 	nb_philos = philo->data->nb_philos;
 	philo->first_fork = philo->data->forks[philo_pos];
 	philo->second_fork = philo->data->forks[(philo_pos + 1) % nb_philos];
@@ -77,12 +77,11 @@ t_data	*init(int ac, char **av)
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
+	data->max_meals = -1;
 	if (ac == 6)
 		data->max_meals = ft_atoi(av[5]);
-	else
-		data->max_meals = -1;
 	data->forks = init_forks(data);
 	data->philos = init_philos(data);
-	assing_forks(data);
+	pthread_mutex_init(&data->print, NULL);
 	return (data);
 }

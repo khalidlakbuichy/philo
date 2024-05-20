@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:47:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/14 07:32:36 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:20:47 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	check_int_overflow(char *arg)
 	}
 	return (1);
 }
+
 static int	is_valid_arg(char *arg)
 {
 	int	i;

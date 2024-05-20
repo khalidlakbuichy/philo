@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:30:55 by klakbuic         ###   ########.fr       */
+/*   Created: 2024/05/20 14:58:46 by klakbuic          #+#    #+#             */
+/*   Updated: 2024/05/20 15:00:20 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	main(int ac, char **av)
+time_t	get_time(void)
 {
-	size_t	i;
-	t_data	*data;
+	struct timeval	*time;
 
-	if ((ac - 1) < 4 || (ac - 1) > 5)
-	{
-		puts("Error: invalid number of arguments");
-	}
-	else
-	{
-		parsing_input(ac, av);
-		data = init(ac, av);
-		i = 0;
-		while (i < data->nb_philos)
-		{
-			pthread_create(&data->philos[i]->thread, NULL, sumilation, &data->philos[i]);
-		}
-	}
+	if (gettimeofday(time, NULL) == -1)
+		ft_error("Error: gettimeofday failed\n");
+	return ((time->tv_sec * 1000) + (time->tv_usec / 1000));
+}
+
+void	ft_usleep(size_t micro_sec)
+{
+	long start;
+
+	start = get_time();
+	while (get_time() - start < micro_sec)
+		usleep(500);
 }

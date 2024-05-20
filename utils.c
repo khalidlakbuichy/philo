@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/14 07:29:09 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:58:33 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
+
 size_t	ft_strlen(char *str)
 {
 	size_t	i;
@@ -38,6 +39,7 @@ void	ft_error(char *msg)
 	write(2, msg, ft_strlen(msg));
 	exit(EXIT_FAILURE);
 }
+
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');

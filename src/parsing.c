@@ -6,11 +6,11 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:47:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 14:20:47 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:17 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../inc/header.h"
 
 static int	is_white(int c)
 {

@@ -6,11 +6,11 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 14:58:33 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:22 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../inc/header.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

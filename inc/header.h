@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:28:58 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:40:22 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,10 @@ struct					s_philo
 	pthread_t			thread;
 	pthread_mutex_t		*first_fork;
 	pthread_mutex_t		*second_fork;
-	int					*stop;
-	int					meals;
-	time_t				*last_meal;
-	int					nb_meals;
-	t_data				*data;
+	size_t				meals;
+	time_t				last_meal;
 	t_state				state;
+	t_data				*data;
 };
 
 /* Prototypes */

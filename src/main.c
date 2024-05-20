@@ -6,11 +6,11 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:30:55 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:16 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../inc/header.h"
 
 int	main(int ac, char **av)
 {

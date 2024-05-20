@@ -6,11 +6,11 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:58:46 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:00:20 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:20 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../inc/header.h"
 
 time_t	get_time(void)
 {

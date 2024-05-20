@@ -6,35 +6,37 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:34:25 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:16 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../inc/header.h"
 
 void	assign_forks(t_philo *philo, int philo_pos)
 {
 	size_t	nb_philos;
 
 	nb_philos = philo->data->nb_philos;
-	philo->first_fork = philo->data->forks[philo_pos];
-	philo->second_fork = philo->data->forks[(philo_pos + 1) % nb_philos];
+	philo->first_fork = &philo->data->forks[philo_pos]->mutex;
+	philo->second_fork = &philo->data->forks[(philo_pos + 1)
+		% nb_philos]->mutex;
 	if (philo->id % 2)
 	{
-		philo->first_fork = philo->data->forks[(philo_pos + 1) % nb_philos];
-		philo->second_fork = philo->data->forks[philo_pos];
+		philo->first_fork = &philo->data->forks[(philo_pos + 1)
+			% nb_philos]->mutex;
+		philo->second_fork = &philo->data->forks[philo_pos]->mutex;
 	}
 }
 
 t_forks	**init_forks(t_data *data)
 {
-	int		i;
+	size_t	i;
 	t_forks	**forks;
 
 	forks = (t_forks **)malloc(sizeof(t_forks *) * data->nb_philos);
 	if (!forks)
 		ft_error("Error: malloc failed\n");
-	i = -1;
+	i = 0;
 	while (++i < data->nb_philos)
 	{
 		forks[i] = (t_forks *)malloc(sizeof(t_forks));
@@ -42,26 +44,32 @@ t_forks	**init_forks(t_data *data)
 			ft_error("Error: malloc failed\n");
 		forks[i]->id = i;
 		pthread_mutex_init(&forks[i]->mutex, NULL);
+		i++;
 	}
 	return (forks);
 }
 
-t_philo	*init_philos(t_data *data)
+t_philo	**init_philos(t_data *data)
 {
+	size_t	i;
 	t_philo	**philos;
 
 	philos = (t_philo **)malloc(sizeof(t_philo *) * data->nb_philos);
 	if (!philos)
 		ft_error("Error: malloc failed\n");
-	for (int i = 0; i < data->nb_philos; i++)
+	i = 0;
+	while (i < data->nb_philos)
 	{
 		philos[i] = (t_philo *)malloc(sizeof(t_philo));
 		if (!philos[i])
 			ft_error("Error: malloc failed\n");
 		philos[i]->id = i + 1;
-		// philos[i]->print = &data->print;
-		// philos[i]->stop = &data->stop;
+		philos[i]->meals = 0;
+		philos[i]->last_meal = 0;
+		philos[i]->state = THINKING;
+		philos[i]->data = data;
 		assign_forks(philos[i], i);
+		i++;
 	}
 	return (philos);
 }

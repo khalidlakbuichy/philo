@@ -6,11 +6,11 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:47:31 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 14:58:56 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 15:52:18 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../inc/header.h"
 
 void	*safe_malloc(size_t size)
 {

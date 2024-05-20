@@ -3,33 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
+#    By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/14 07:21:49 by klakbuic          #+#    #+#              #
-#    Updated: 2024/05/14 07:23:02 by klakbuic         ###   ########.fr        #
+#    Created: 2024/05/20 16:06:03 by klakbuic          #+#    #+#              #
+#    Updated: 2024/05/20 16:07:28 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-SRC = main.c init.c utils.c parsing.c ft_atoi.c
-OBJ = $(SRC:.c=.o)
-TARGET = philo
+NAME         = philo
+BONUS        = checker
+HEADER       = /inc/header.h
 
-all: $(TARGET)
+CC           = cc
+CFLAGS       = -Wall -Wextra -Werror
 
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(TARGET)
+SRCSDIR      = src
+SRCSFILES    =	ft_atoi.c  init.c  main.c  parsing.c  safe.c  simulation.c  time.c  utils.c
+SRCS	     = $(addprefix $(SRCSDIR)/, $(SRCSFILES))
 
-%.o: %.c
+OBJSDIR      = obj
+OBJSFILES    = $(SRCSFILES:.c=.o)
+OBJS	     = $(addprefix $(OBJSDIR)/, $(OBJSFILES))
+
+OBJS_B = $(SRCS_B:.c=.o)
+
+all: $(NAME)
+
+$(OBJSDIR)/%.o: $(SRCSDIR)/%.c
+	@mkdir -p $(OBJSDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(NAME): $(OBJS) $(LIB)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) -I $(HEADER) -o $(NAME)
+
+bonus: $(BONUS)
+
+$(BONUS): $(OBJS_B)
+	@$(CC) $(CFLAGS) $(OBJS_B) $(LIB) -I $(HEADER) -o $(BONUS)
+
 clean:
-	rm -f $(OBJ)
+	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_B)
 
 fclean: clean
-	rm -f $(TARGET)
+	@$(RM) $(NAME)
+	@$(RM) $(BONUS)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

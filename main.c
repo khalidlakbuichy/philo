@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/14 15:27:43 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/20 12:16:37 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(int ac, char **av)
 	{
 		parsing_input(ac, av);
 		data = init(ac, av);
-		for (int i = 0; i < data->nb_philo; i++)
+		for (int i = 0; i < data->nb_philos; i++)
 		{
-			pthrad_create(&data->philo[i].thread, NULL, &philo, &data->philo[i]);
+			pthread_create(&data->philos[i]->thread, NULL, NULL, &data->philos[i]);
 		}
 		
 		/* Success */  

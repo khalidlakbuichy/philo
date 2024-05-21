@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 16:31:45 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/21 15:05:12 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	*sumilation(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
-		ft_usleep(philo->data->time_to_eat - 10);
+		ft_usleep(philo->data->time_to_eat / 2);
 	philo->last_meal = get_time();
 	while (philo->state != DEAD)
 	{

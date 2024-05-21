@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:40:22 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/21 14:39:59 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ t_data					*init(int ac, char **av);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_isdigit(int c);
 time_t					get_time(void);
-void					ft_usleep(size_t micro_sec);
+void					ft_usleep(time_t micro_sec);
 void					print_state(t_philo *philo);
 void					*sumilation(void *arg);
 

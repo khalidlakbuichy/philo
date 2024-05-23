@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/21 15:14:33 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/23 10:00:54 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 		i = 0;
 		while (i < data->nb_philos)
 		{
-			pthread_create(&data->philos[i]->thread, NULL, sumilation, &data->philos[i]);
+			pthread_create(&data->philos[i]->thread, NULL, sumilation, data->philos[i]);
 		}
 		for (size_t j = 0; j < data->nb_philos; j++)
 		{

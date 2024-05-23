@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/21 15:18:51 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/23 15:58:41 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,13 @@ void	assign_forks(t_philo *philo, int philo_pos)
 
 	nb_philos = philo->data->nb_philos;
 	philo->first_fork = &philo->data->forks[philo_pos]->mutex;
-	philo->second_fork = &philo->data->forks[(philo_pos + 1)
-		% nb_philos]->mutex;
+	philo->second_fork = &philo->data->forks[(philo_pos + 1) % nb_philos]->mutex;
 	if (philo->id % 2)
 	{
-		philo->first_fork = &philo->data->forks[(philo_pos + 1)
-			% nb_philos]->mutex;
+		philo->first_fork = &philo->data->forks[(philo_pos + 1) % nb_philos]->mutex;
 		philo->second_fork = &philo->data->forks[philo_pos]->mutex;
 	}
+	// printf("assign philo id: %d fork %p\n", philo->id, philo->first_fork);
 }
 
 t_forks	**init_forks(t_data *data)
@@ -37,7 +36,7 @@ t_forks	**init_forks(t_data *data)
 	if (!forks)
 		ft_error("Error: malloc failed\n");
 	i = 0;
-	while (++i < data->nb_philos)
+	while (i < data->nb_philos)
 	{
 		forks[i] = (t_forks *)malloc(sizeof(t_forks));
 		if (!forks[i])

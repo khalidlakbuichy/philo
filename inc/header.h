@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/21 14:39:59 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/23 16:30:33 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ struct					s_data
 	size_t				time_to_die;
 	size_t				time_to_eat;
 	size_t				time_to_sleep;
+	time_t				start_time;
 	int					max_meals;
 	pthread_mutex_t		print;
 	t_philo				**philos;
@@ -86,7 +87,7 @@ int						ft_atoi(const char *str);
 t_data					*init(int ac, char **av);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_isdigit(int c);
-time_t					get_time(void);
+time_t					get_current_time(void);
 void					ft_usleep(time_t micro_sec);
 void					print_state(t_philo *philo);
 void					*sumilation(void *arg);

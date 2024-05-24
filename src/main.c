@@ -6,16 +6,17 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/23 16:20:49 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/24 10:28:54 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/header.h"
 
-static int one_philo(t_data *data)
+static int	one_philo(t_data *data)
 {
 	return (data->max_meals);
 }
+
 int	main(int ac, char **av)
 {
 	size_t	i;
@@ -35,9 +36,22 @@ int	main(int ac, char **av)
 		i = 0;
 		while (i < data->nb_philos)
 		{
-			pthread_create(&data->philos[i]->thread, NULL, sumilation,
-				data->philos[i]);
+			pthread_create(&data->philos[i]->thread, NULL, sumilation, data->philos[i]);
 			i++;
+		}
+		i = 0;
+		while (true)
+		{
+			if (((get_current_time() - data->philos[i]->last_meal) > data->time_to_die) && data->philos[i]->state != EATING)
+			{
+				data->philos[i]->state = DEAD;
+				pthread_mutex_lock(&data->print_mutex);
+				printf("%ld %d %s\n", get_current_time() - data->start_time, data->philos[i]->id, DEAD_STAT);
+				return (EXIT_SUCCESS);
+			}
+			i++;
+			if (i == data->nb_philos)
+				i = 0;
 		}
 		for (size_t j = 0; j < data->nb_philos; j++)
 		{

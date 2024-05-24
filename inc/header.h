@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/23 16:30:33 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/24 09:09:34 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ struct					s_forks
 struct					s_data
 {
 	size_t				nb_philos;
-	size_t				time_to_die;
-	size_t				time_to_eat;
-	size_t				time_to_sleep;
+	time_t				time_to_die;
+	time_t				time_to_eat;
+	time_t				time_to_sleep;
 	time_t				start_time;
 	int					max_meals;
-	pthread_mutex_t		print;
+	pthread_mutex_t		print_mutex;
 	t_philo				**philos;
 	t_forks				**forks;
 };

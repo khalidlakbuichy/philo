@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 09:07:18 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:06:04 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,23 @@
 # include <sys/time.h>
 # include <unistd.h>
 
+/* Colors    */
+# define COLOR_RED "\033[1;31m"
+# define COLOR_BLUE "\033[1;34m"
+# define COLOR_GREEN "\033[1;32m"
+# define COLOR_CYAN "\033[1;36m"
+# define COLOR_YELLOW "\033[1;33m"
+# define COLOR_RESET "\033[0m"
+
 /*  Defines  */
+# define ERROR -1
 # define MAX_INT_LEN 10
 # define INT_MAX "2147483647"
-# define FORK_TAKEN "has taken a fork"
-# define THINKING_STAT "is thinking"
-# define EATING_STAT "is eating"
-# define SLEEPING_STAT "is sleeping"
-# define DEAD_STAT "died"
+# define FORK_TAKEN "has taken a fork 🍴"
+# define THINKING_STAT "is thinking 💡"
+# define EATING_STAT "is eating 🍲"
+# define SLEEPING_STAT "is sleeping 💤"
+# define DEAD_STAT "died 💀"
 
 /* TYPEDEFS */
 typedef struct s_data	t_data;
@@ -82,7 +91,7 @@ struct					s_philo
 };
 
 /* Prototypes */
-void					parsing_input(int ac, char **av);
+int						parsing_input(int ac, char **av);
 size_t					ft_strlen(char *str);
 void					ft_error(char *msg);
 int						ft_atoi(const char *str);
@@ -95,5 +104,9 @@ void					print_state(t_philo *philo);
 void					*sumilation(void *arg);
 void					start_simulation(t_data *data);
 void					free_heap(t_data *data);
+int						one_philo(t_data *data);
+int						check_dead_philo(t_data *data);
+int						check_meals(t_data *data);
+void					wait_pthread(t_data *data);
 
 #endif /* HEADER_H */

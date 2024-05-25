@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 09:08:20 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 09:58:50 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ size_t	ft_strlen(char *str)
 
 void	ft_error(char *msg)
 {
-	write(2, msg, ft_strlen(msg));
-	exit(EXIT_FAILURE);
+	write(STDERR_FILENO, COLOR_RED, ft_strlen(COLOR_RED));
+	write(STDERR_FILENO, msg, ft_strlen(msg));
+	write(STDERR_FILENO, COLOR_RESET, ft_strlen(COLOR_RESET));
 }
 
 int	ft_isdigit(int c)

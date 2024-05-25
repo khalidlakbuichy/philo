@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:28:43 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:49:41 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	eating(t_philo *philo)
 	data = philo->data;
 	philo->state = EATING;
 	philo->last_meal = getcurrtime();
-	philo->meals++;
 	print_state(philo);
+	philo->meals++;
 	ft_usleep(data->time_to_eat);
 	pthread_mutex_unlock(philo->first_fork);
 	pthread_mutex_unlock(philo->second_fork);

@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:20:34 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:38:41 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av)
 			return (free_heap(data), EXIT_SUCCESS);
 		}
 		start_simulation(data);
-		if (check_dead_philo(data) == 0 || check_meals(data) == 0)
+		if (check_dead_philo(data) == true)
 			return (free_heap(data), EXIT_SUCCESS);
 		wait_pthread(data);
 	}

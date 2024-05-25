@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:26:55 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:40:42 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void					print_state(t_philo *philo);
 void					*sumilation(void *arg);
 void					start_simulation(t_data *data);
 void					free_heap(t_data *data);
-void						one_philo(t_data *data);
-int						check_dead_philo(t_data *data);
-int						check_meals(t_data *data);
+void					one_philo(t_data *data);
+bool					check_dead_philo(t_data *data);
+bool					check_meals(t_data *data);
 void					wait_pthread(t_data *data);
 void					sleeping(t_philo *philo);
 void					thinking(t_philo *philo);

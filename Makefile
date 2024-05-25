@@ -6,7 +6,7 @@
 #    By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 16:06:03 by klakbuic          #+#    #+#              #
-#    Updated: 2024/05/23 15:58:24 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/05/25 08:47:40 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS       = -Wall -Wextra -Werror
 DEBUG        = -g3 -fsanitize=address
 
 SRCSDIR      = src
-SRCSFILES    =	ft_atoi.c  init.c  main.c  parsing.c  safe.c  simulation.c  time.c  utils.c
+SRCSFILES    =	ft_atoi.c  init.c  main.c  parsing.c  routine.c  safe.c  sumilation.c  time.c  utils.c
 SRCS	     = $(addprefix $(SRCSDIR)/, $(SRCSFILES))
 
 OBJSDIR      = obj
@@ -32,10 +32,10 @@ all: $(NAME)
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 	@mkdir -p $(OBJSDIR)
-	$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
+	$(CC) $(CFLAGS) $() -c $< -o $@
 
 $(NAME): $(OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(DEBUG) -I $(HEADER) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) $() -I $(HEADER) -o $(NAME)
 
 bonus: $(BONUS)
 

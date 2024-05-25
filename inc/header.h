@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/24 09:09:34 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 09:07:18 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ enum					e_state
 	EATING,
 	SLEEPING,
 	DEAD,
-	FULL
+	TAKEN_FORK
 };
 
 /* STRCUTS */
@@ -63,6 +63,8 @@ struct					s_data
 	time_t				start_time;
 	int					max_meals;
 	pthread_mutex_t		print_mutex;
+	bool				dead;
+	bool				full;
 	t_philo				**philos;
 	t_forks				**forks;
 };
@@ -87,9 +89,11 @@ int						ft_atoi(const char *str);
 t_data					*init(int ac, char **av);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_isdigit(int c);
-time_t					get_current_time(void);
+time_t					getcurrtime(void);
 void					ft_usleep(time_t micro_sec);
 void					print_state(t_philo *philo);
 void					*sumilation(void *arg);
+void					start_simulation(t_data *data);
+void					free_heap(t_data *data);
 
 #endif /* HEADER_H */

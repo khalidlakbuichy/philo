@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   sumilation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/20 14:58:46 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 08:22:31 by klakbuic         ###   ########.fr       */
+/*   Created: 2024/05/25 08:32:49 by klakbuic          #+#    #+#             */
+/*   Updated: 2024/05/25 08:53:23 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/header.h"
 
-time_t	getcurrtime(void)
+void	start_simulation(t_data *data)
 {
-	struct timeval	time;
+	size_t i;
 
-	if (gettimeofday(&time, NULL) == -1)
-		ft_error("gettimeofday() error\n");
-	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
-}
-
-void	ft_usleep(time_t milliseconds)
-{
-	time_t	start;
-
-	start = getcurrtime();
-	while ((getcurrtime() - start) < milliseconds)
-		usleep(100);
+	data->start_time = getcurrtime();
+	i = 0;
+	while (i < data->nb_philos)
+	{
+		data->philos[i]->last_meal = data->start_time;
+		pthread_create(&data->philos[i]->thread, NULL, sumilation,
+			data->philos[i]);
+        i++;
+	}
 }

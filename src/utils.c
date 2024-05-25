@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/23 16:49:50 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 09:08:20 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,29 @@ void	ft_error(char *msg)
 int	ft_isdigit(int c)
 {
 	return (c >= '0' && c <= '9');
+}
+
+void free_heap(t_data *data)
+{
+	size_t i;
+
+	i = 0;
+	while (i < data->nb_philos)
+	{
+		pthread_mutex_destroy(&data->forks[i]->mutex);
+		free(data->forks[i]);
+		i++;
+	}
+	i = 0;
+	while (i < data->nb_philos)
+	{
+		pthread_mutex_destroy(data->philos[i]->first_fork);
+		pthread_mutex_destroy(data->philos[i]->second_fork);
+		data->philos[i]->data = NULL;
+		free(data->philos[i]);
+		i++;
+	}
+	free(data->philos);
+	free(data->forks);
+	free(data);
 }

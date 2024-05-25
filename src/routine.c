@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:05:01 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:28:43 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,38 @@
 
 void	print_state(t_philo *philo)
 {
-    if (philo->data->dead)
-        return ;
-    pthread_mutex_lock(&philo->data->print_mutex);
-    if (philo->state == THINKING && !philo->data->dead)
-        printf(COLOR_BLUE "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime() - philo->data->start_time,
-            philo->id, THINKING_STAT);
-    else if (philo->state == EATING && !philo->data->dead)
-        printf(COLOR_GREEN "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime() - philo->data->start_time,
-            philo->id, EATING_STAT);
-    else if (philo->state == SLEEPING && !philo->data->dead)
-        printf(COLOR_CYAN "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime() - philo->data->start_time,
-            philo->id, SLEEPING_STAT);
-    else if (philo->state == TAKEN_FORK && !philo->data->dead)
-        printf(COLOR_YELLOW "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime() - philo->data->start_time,
-            philo->id, FORK_TAKEN);
-    pthread_mutex_unlock(&philo->data->print_mutex);
+	if (philo->data->dead)
+		return ;
+	pthread_mutex_lock(&philo->data->print_mutex);
+	if (philo->state == THINKING && !philo->data->dead)
+		printf(COLOR_BLUE "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, THINKING_STAT);
+	else if (philo->state == EATING && !philo->data->dead)
+		printf(COLOR_GREEN "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, EATING_STAT);
+	else if (philo->state == SLEEPING && !philo->data->dead)
+		printf(COLOR_CYAN "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, SLEEPING_STAT);
+	else if (philo->state == TAKEN_FORK && !philo->data->dead)
+		printf(COLOR_YELLOW "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, FORK_TAKEN);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
-static void	take_forks(t_philo *philo)
+void	take_forks(t_philo *philo)
 {
 	// t_data	*data;
-
 	// if (philo->data->dead)
 	// 	return ;
 	// data = philo->data;
 	philo->state = TAKEN_FORK;
 	pthread_mutex_lock(philo->first_fork);
 	print_state(philo);
-	// printf("%ld %d has taken a fork\n", getcurrtime() - data->start_time, philo->id);
 	pthread_mutex_lock(philo->second_fork);
 	print_state(philo);
-	// printf("%ld %d has taken a fork\n", getcurrtime() - data->start_time, philo->id);
 }
 
-static void	thinking(t_philo *philo)
+void	thinking(t_philo *philo)
 {
 	// if (philo->data->dead)
 	// 	return ;
@@ -56,7 +53,7 @@ static void	thinking(t_philo *philo)
 	print_state(philo);
 }
 
-static void	sleeping(t_philo *philo)
+void	sleeping(t_philo *philo)
 {
 	t_data	*data;
 
@@ -68,7 +65,7 @@ static void	sleeping(t_philo *philo)
 	ft_usleep(data->time_to_sleep);
 }
 
-static void	eating(t_philo *philo)
+void	eating(t_philo *philo)
 {
 	t_data	*data;
 

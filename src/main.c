@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 09:53:42 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:20:34 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	main(int ac, char **av)
 			return (EXIT_FAILURE);
 		data = init(ac, av);
 		if (data->nb_philos == 1)
-			return (one_philo(data));
+		{
+			one_philo(data);
+			return (free_heap(data), EXIT_SUCCESS);
+		}
 		start_simulation(data);
 		if (check_dead_philo(data) == 0 || check_meals(data) == 0)
-		{
-			free_heap(data);
-			return (EXIT_SUCCESS);
-		}
+			return (free_heap(data), EXIT_SUCCESS);
 		wait_pthread(data);
 	}
 }

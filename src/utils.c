@@ -1,72 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   time.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 09:58:50 by klakbuic         ###   ########.fr       */
+/*   Created: 2024/05/20 14:58:46 by klakbuic          #+#    #+#             */
+/*   Updated: 2024/05/25 15:15:27 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/header.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	print_state(t_philo *philo)
 {
-	while ((n-- > 0))
-	{
-		if (*s1 == '\0' || (unsigned char)*s1 != (unsigned char)*s2)
-			return ((unsigned char)*s1 - (unsigned char)*s2);
-		s1++;
-		s2++;
-	}
-	return (0);
+	if (philo->data->dead)
+		return ;
+	pthread_mutex_lock(&philo->data->print_mutex);
+	if (philo->state == THINKING && !philo->data->dead)
+		printf(COLOR_BLUE "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, THINKING_STAT);
+	else if (philo->state == EATING && !philo->data->dead)
+		printf(COLOR_GREEN "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, EATING_STAT);
+	else if (philo->state == SLEEPING && !philo->data->dead)
+		printf(COLOR_CYAN "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, SLEEPING_STAT);
+	else if (philo->state == TAKEN_FORK && !philo->data->dead)
+		printf(COLOR_YELLOW "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+			- philo->data->start_time, philo->id, FORK_TAKEN);
+	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 
-size_t	ft_strlen(char *str)
+time_t	getcurrtime(void)
 {
-	size_t	i;
+	struct timeval	time;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (gettimeofday(&time, NULL) == -1)
+		ft_error("gettimeofday() error\n");
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-void	ft_error(char *msg)
+void	ft_usleep(time_t milliseconds)
 {
-	write(STDERR_FILENO, COLOR_RED, ft_strlen(COLOR_RED));
-	write(STDERR_FILENO, msg, ft_strlen(msg));
-	write(STDERR_FILENO, COLOR_RESET, ft_strlen(COLOR_RESET));
-}
+	time_t	start;
 
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-void free_heap(t_data *data)
-{
-	size_t i;
-
-	i = 0;
-	while (i < data->nb_philos)
-	{
-		pthread_mutex_destroy(&data->forks[i]->mutex);
-		free(data->forks[i]);
-		i++;
-	}
-	i = 0;
-	while (i < data->nb_philos)
-	{
-		pthread_mutex_destroy(data->philos[i]->first_fork);
-		pthread_mutex_destroy(data->philos[i]->second_fork);
-		data->philos[i]->data = NULL;
-		free(data->philos[i]);
-		i++;
-	}
-	free(data->philos);
-	free(data->forks);
-	free(data);
+	start = getcurrtime();
+	while ((getcurrtime() - start) < milliseconds)
+		usleep(100);
 }

@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:48:59 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:10:33 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ bool	check_dead_philo(t_data *data)
 	{
 		if (dead_philo(data->philos[i]))
 			return (true);
-        if (check_meals(data))
-            return (true);
+		if (check_meals(data))
+			return (true);
 		i++;
 		if (i == data->nb_philos)
 			i = 0;

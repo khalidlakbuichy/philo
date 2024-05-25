@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 08:58:52 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:10:55 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	assign_forks(t_philo *philo)
 		philo->first_fork = &philo->data->forks[philo->id - 1]->mutex;
 		philo->second_fork = &philo->data->forks[philo->id % nb_philos]->mutex;
 	}
-	// printf("philo id: %d\t first fork: %p\t second fork: %p\n", philo->id,
-	// 	philo->first_fork, philo->second_fork);
 }
 
 t_forks	**init_forks(t_data *data)
@@ -68,7 +66,6 @@ t_philo	**init_philos(t_data *data)
 			ft_error("Error: malloc failed\n");
 		philos[i]->id = i + 1;
 		philos[i]->meals = 0;
-		// philos[i]->last_meal = data->start_time;
 		philos[i]->state = THINKING;
 		philos[i]->data = data;
 		assign_forks(philos[i]);
@@ -91,7 +88,6 @@ t_data	*init(int ac, char **av)
 	data->max_meals = -1;
 	if (ac == 6)
 		data->max_meals = ft_atoi(av[5]);
-	// data->start_time = getcurrtime();
 	data->forks = init_forks(data);
 	data->philos = init_philos(data);
 	data->dead = false;

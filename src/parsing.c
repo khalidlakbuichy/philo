@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:47:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 09:55:34 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:11:54 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ static int	is_valid_arg(char *arg)
 	while (is_white(*arg))
 		arg++;
 	if (*arg == '-')
-		return(ft_error("Error: negative number\n"), ERROR);
+		return (ft_error("Error: negative number\n"), ERROR);
 	if (check_int_overflow(arg))
-		return(ft_error("Error: integer overflow\n"), ERROR);
+		return (ft_error("Error: integer overflow\n"), ERROR);
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
-			return(ft_error("Error: invalid argument\n"), ERROR);
+			return (ft_error("Error: invalid argument\n"), ERROR);
 		i++;
 	}
 	return (0);
@@ -64,7 +64,7 @@ int	parsing_input(int ac, char **av)
 	while (i < ac)
 	{
 		if (is_valid_arg(av[i]) == ERROR)
-			return(ERROR);
+			return (ERROR);
 		i++;
 	}
 	return (0);

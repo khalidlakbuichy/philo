@@ -6,7 +6,7 @@
 #    By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 16:06:03 by klakbuic          #+#    #+#              #
-#    Updated: 2024/05/25 09:59:45 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/05/25 15:17:41 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS       = -Wall -Wextra -Werror
 DEBUG        = -g3 -fsanitize=address
 
 SRCSDIR      = src
-SRCSFILES    = ft_atoi.c  init.c  main.c  parsing.c  philo.c  routine.c  safe.c  sumilation.c  time.c  utils.c
+SRCSFILES    = ft_atoi.c  init.c  lib.c  main.c  parsing.c  philo.c  routine.c  sumilation.c  utils.c
 SRCS	     = $(addprefix $(SRCSDIR)/, $(SRCSFILES))
 
 OBJSDIR      = obj

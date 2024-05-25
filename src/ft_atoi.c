@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:05:59 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/20 15:52:06 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:11:23 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int	is_white(int c)
 
 int	ft_atoi(const char *str)
 {
-	int signe;
-	unsigned int nb;
+	int				signe;
+	unsigned int	nb;
 
 	signe = 1;
 	nb = 0;

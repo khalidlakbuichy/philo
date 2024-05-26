@@ -1,58 +1,48 @@
-Philosopher Project
-Overview
+# Philosopher Project
+## Overview
 
-The Philosopher project is a part of the 42 network curriculum designed to teach students fundamental concepts in concurrent programming and resource synchronization. The project involves implementing a solution to the classic Dining Philosophers Problem, which serves as a practical exercise in understanding and applying concurrency, parallelism, mutex programming, and the use of pthreads.
-Concepts Learned
-Concurrency and Parallelism
+The Philosopher project is part of the 42 network curriculum, focusing on concurrent programming and resource synchronization. It involves solving the Dining Philosophers Problem, a classic concurrency challenge.
 
-    Concurrency: The ability of a system to handle multiple tasks at the same time. This project taught me how to manage concurrent processes, ensuring that they do not interfere with each other in a multi-threaded environment.
-    Parallelism: The simultaneous execution of multiple tasks. I learned to leverage multi-core processors by running threads in parallel to improve performance.
+## Concepts Learned
+### Concurrency and Parallelism
 
-Mutex Programming
+* **Concurrency**: Managing multiple tasks simultaneously without interference.
+* **Parallelism**: Executing multiple tasks at the same time for improved performance.
 
-    Mutex (Mutual Exclusion): A synchronization primitive used to prevent multiple threads from accessing a shared resource simultaneously. By using mutexes, I ensured that only one philosopher could pick up a fork at a time, preventing data races and ensuring data integrity.
+### Mutex Programming
 
-Pthreads
+* **Mutex (Mutual Exclusion)**: Prevents multiple threads from accessing shared resources simultaneously, ensuring data integrity.
 
-    Pthreads (POSIX threads): A POSIX standard for implementing multithreading at the operating system level. This project provided hands-on experience with creating, synchronizing, and managing threads using the pthread library in C.
+### Pthreads
 
-Project Description
-The Dining Philosophers Problem
+* **Pthreads (POSIX threads)**: Standard for implementing multithreading. Gained experience in creating, synchronizing, and managing threads using the pthread library in C.
 
-The Dining Philosophers Problem is a classic synchronization problem proposed by Edsger Dijkstra. The scenario involves five philosophers who alternately think and eat. They sit around a circular table with a bowl of spaghetti in the center and five forks placed between them. To eat, a philosopher must pick up the two forks adjacent to them. The challenge is to design a protocol that ensures:
+## Project Description
+**Dining Philosophers Problem**: Five philosophers alternate between thinking and eating at a circular table with five forks.
+Philosophers need two forks to eat, leading to potential deadlocks and resource contention.
+The goal is to design a protocol ensuring no deadlock and fair access to resources.
 
-    No two philosophers can use the same fork simultaneously.
-    No philosopher will starve (each philosopher gets a chance to eat).
-    The system does not deadlock (where all philosophers are waiting for a fork indefinitely).
+## Implementation
 
-Implementation Details
+* **Threads**: Each philosopher is a separate thread.
+* **Mutexes**: Forks are mutexes ensuring mutual exclusion.
+    
 
-    Threads: Each philosopher is represented as a separate thread.
-    Mutexes: Forks are represented by mutexes to ensure mutual exclusion when accessing them.
-    Thread Synchronization: Proper synchronization techniques are used to ensure that no two philosophers pick up the same fork simultaneously, and to avoid deadlock situations.
+## Compilation and Execution
 
-Key Functions
+```bash
+git clone https://github.com/khalidlakbuichy/philosopher.git
+cd philosopher
+make
+./philosopher number_of_philosophers time_to_die time_to_eat time_to_sleep 
+[number_of_times_each_philosopher_must_eat]
+```
+## Lessons Learned
 
-    philosopher_thread(): The main function executed by each philosopher thread. It alternates between thinking and eating states.
-    pickup_forks(): Function to pick up the two forks. It uses mutex locks to ensure mutual exclusion.
-    putdown_forks(): Function to put down the two forks, releasing the mutex locks.
-    think() and eat(): Simulated actions for thinking and eating, using sleep functions to mimic time spent in each state.
+* **Concurrency Control**: Managing multiple threads effectively.
+* **Deadlock Prevention**: Implementing strategies to avoid deadlock.
+* **Resource Sharing**: Using mutexes for safe resource access.
 
-Compilation and Execution
+## Conclusion
 
-To compile and run the project, use the following commands:
-
-sh
-
-gcc -pthread -o philosopher philosopher.c
-./philosopher
-
-Lessons Learned
-
-    Concurrency Control: Learned to manage multiple threads and ensure they operate correctly without interfering with each other.
-    Deadlock Prevention: Implemented strategies to prevent deadlock, ensuring that all philosophers eventually get to eat.
-    Resource Sharing: Gained practical experience in using mutexes to manage access to shared resources safely.
-
-Conclusion
-
-The Philosopher project was an invaluable learning experience in understanding and applying concurrency and synchronization concepts. It provided a solid foundation in using pthreads and mutexes, which are essential tools in the development of robust, multi-threaded applications.
+The Philosopher project provided valuable experience in concurrency, synchronization, and multithreading, essential for developing robust applications.

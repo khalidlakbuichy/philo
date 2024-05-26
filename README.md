@@ -2,7 +2,7 @@
 ![](https://media.licdn.com/dms/image/D5612AQG6FH3H10niqg/article-cover_image-shrink_720_1280/0/1690698292358?e=2147483647&v=beta&t=Aj2FDtjWJ51caEXx6-JVLK_w9ug2ebkFweNsRdxiLQc)
 ## Overview
 
-The Philosopher project is part of the 42 network curriculum, focusing on concurrent programming and resource synchronization. It involves solving the Dining Philosophers Problem, a classic concurrency challenge.
+The Philosopher project is part of the 1337 coding school curriculum, focusing on concurrent programming and resource synchronization. It involves solving the Dining Philosophers Problem, a classic concurrency challenge.
 
 ## Concepts Learned
 ### Concurrency and Parallelism

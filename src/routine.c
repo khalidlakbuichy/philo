@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 15:15:47 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:48:46 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	take_forks(t_philo *philo)
 
 void	thinking(t_philo *philo)
 {
+	ft_usleep(1);
 	philo->state = THINKING;
 	print_state(philo);
 }

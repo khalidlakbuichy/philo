@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 15:10:55 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:33:40 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ t_data	*init(int ac, char **av)
 	if (!data)
 		ft_error("Error: malloc failed\n");
 	data->nb_philos = ft_atoi(av[1]);
+	if (data->nb_philos == 0)
+		return (NULL);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);

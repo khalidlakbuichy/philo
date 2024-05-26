@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 15:10:33 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:44:34 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ bool	dead_philo(t_philo *philo)
 	{
 		philo->data->dead = true;
 		pthread_mutex_lock(&philo->data->print_mutex);
-		printf(COLOR_RED "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
+		printf("%ld %d %s\n", getcurrtime()
 			- philo->data->start_time, philo->id, DEAD_STAT);
 		pthread_mutex_unlock(&philo->data->print_mutex);
 		return (true);

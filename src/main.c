@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:38:41 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 15:38:16 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int ac, char **av)
 		if (parsing_input(ac, av) == ERROR)
 			return (EXIT_FAILURE);
 		data = init(ac, av);
+		if (!data)
+			return (EXIT_FAILURE);
 		if (data->nb_philos == 1)
 		{
 			one_philo(data);

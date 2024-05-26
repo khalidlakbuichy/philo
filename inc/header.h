@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 10:40:42 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/05/25 16:44:54 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@
 # define ERROR -1
 # define MAX_INT_LEN 10
 # define INT_MAX "2147483647"
-# define FORK_TAKEN "has taken a fork 🍴"
-# define THINKING_STAT "is thinking 💡"
-# define EATING_STAT "is eating 🍲"
-# define SLEEPING_STAT "is sleeping 💤"
-# define DEAD_STAT "died 💀"
+# define FORK_TAKEN "has taken a fork"
+# define THINKING_STAT "is thinking"
+# define EATING_STAT "is eating"
+# define SLEEPING_STAT "is sleeping"
+# define DEAD_STAT "died"
 
 /* TYPEDEFS */
 typedef struct s_data	t_data;

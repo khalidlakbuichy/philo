@@ -32,8 +32,14 @@ The goal is to design a protocol ensuring no deadlock and fair access to resourc
 
 ```bash
 git clone https://github.com/khalidlakbuichy/philosopher.git
+```
+```bash
 cd philosopher
+```
+``` bash
 make
+```
+```bash
 ./philosopher number_of_philosophers time_to_die time_to_eat time_to_sleep 
 [number_of_times_each_philosopher_must_eat]
 ```

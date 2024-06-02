@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 15:38:16 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/02 09:10:23 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	if ((ac - 1) < 4 || (ac - 1) > 5)
 	{
-		ft_error("Error: invalid number of arguments");
+		ft_error("Error: invalid number of arguments\n");
 		return (EXIT_FAILURE);
 	}
 	else

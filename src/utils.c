@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:58:46 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 16:42:54 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/02 09:51:57 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ void	print_state(t_philo *philo)
 		return ;
 	pthread_mutex_lock(&philo->data->print_mutex);
 	if (philo->state == THINKING && !philo->data->dead)
-		printf("%ld %d %s\n" , getcurrtime()
-			- philo->data->start_time, philo->id, THINKING_STAT);
+		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
+			philo->id, THINKING_STAT);
 	else if (philo->state == EATING && !philo->data->dead)
-		printf( "%ld %d %s\n" , getcurrtime()
-			- philo->data->start_time, philo->id, EATING_STAT);
+		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
+			philo->id, EATING_STAT);
 	else if (philo->state == SLEEPING && !philo->data->dead)
-		printf("%ld %d %s\n" , getcurrtime()
-			- philo->data->start_time, philo->id, SLEEPING_STAT);
+		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
+			philo->id, SLEEPING_STAT);
 	else if (philo->state == TAKEN_FORK && !philo->data->dead)
-		printf( "%ld %d %s\n" , getcurrtime()
-			- philo->data->start_time, philo->id, FORK_TAKEN);
+		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
+			philo->id, FORK_TAKEN);
 	pthread_mutex_unlock(&philo->data->print_mutex);
 }
 

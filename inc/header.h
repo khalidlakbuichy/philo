@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 16:44:54 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/03 10:03:34 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ struct					s_data
 	time_t				start_time;
 	int					max_meals;
 	pthread_mutex_t		print_mutex;
+	pthread_mutex_t		dead_mutex;
 	bool				dead;
 	bool				full;
 	t_philo				**philos;

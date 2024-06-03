@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/05/25 16:44:34 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/03 10:17:47 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,45 @@ bool	check_meals(t_data *data)
 	}
 	return (false);
 }
-
-bool	dead_philo(t_philo *philo)
+bool dead_philo(t_philo *philo)
 {
-	if (((getcurrtime() - philo->last_meal) > philo->data->time_to_die)
-		&& philo->state != EATING)
-	{
-		philo->data->dead = true;
-		pthread_mutex_lock(&philo->data->print_mutex);
-		printf("%ld %d %s\n", getcurrtime()
-			- philo->data->start_time, philo->id, DEAD_STAT);
-		pthread_mutex_unlock(&philo->data->print_mutex);
-		return (true);
-	}
-	return (false);
+    bool is_dead = false;
+
+    pthread_mutex_lock(&philo->data->dead_mutex);
+    if (((getcurrtime() - philo->last_meal) > philo->data->time_to_die)
+        && philo->state != EATING)
+    {
+        philo->data->dead = true;
+        is_dead = true;
+    }
+    pthread_mutex_unlock(&philo->data->dead_mutex);
+
+    if (is_dead)
+    {
+        pthread_mutex_lock(&philo->data->print_mutex);
+        printf("%ld %d %s\n", getcurrtime()
+            - philo->data->start_time, philo->id, DEAD_STAT);
+        pthread_mutex_unlock(&philo->data->print_mutex);
+    }
+
+    return is_dead;
 }
+// bool	dead_philo(t_philo *philo)
+// {
+// 	if (((getcurrtime() - philo->last_meal) > philo->data->time_to_die)
+// 		&& philo->state != EATING)
+// 	{
+// 		pthread_mutex_lock(&philo->data->dead_mutex);
+// 		philo->data->dead = true;
+// 		pthread_mutex_unlock(&philo->data->dead_mutex);
+// 		pthread_mutex_lock(&philo->data->print_mutex);
+// 		printf("%ld %d %s\n", getcurrtime()
+// 			- philo->data->start_time, philo->id, DEAD_STAT);
+// 		pthread_mutex_unlock(&philo->data->print_mutex);
+// 		return (true);
+// 	}
+// 	return (false);
+// }
 
 bool	check_dead_philo(t_data *data)
 {

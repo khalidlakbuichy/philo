@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/03 10:04:02 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:31:07 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ t_philo	**init_philos(t_data *data)
 		philos[i]->meals = 0;
 		philos[i]->state = THINKING;
 		philos[i]->data = data;
+		pthread_mutex_init(&philos[i]->philo_mutex, NULL);
 		assign_forks(philos[i]);
 		i++;
 	}

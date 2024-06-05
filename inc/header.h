@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/03 10:03:34 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/04 10:59:48 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ struct					s_philo
 	pthread_t			thread;
 	pthread_mutex_t		*first_fork;
 	pthread_mutex_t		*second_fork;
+	pthread_mutex_t		philo_mutex;
 	size_t				meals;
 	time_t				last_meal;
 	t_state				state;
@@ -112,5 +113,12 @@ void					wait_pthread(t_data *data);
 void					sleeping(t_philo *philo);
 void					thinking(t_philo *philo);
 void					eating(t_philo *philo);
+/* geteres */
+time_t					get_last_meal(t_philo *philo);
+t_state					get_philo_state(t_philo *philo);
+/* seteres */
+void					set_last_meal(t_philo *philo, time_t time);
+void					set_state(t_philo *philo, t_state state);
+bool					is_dead(t_philo *philo);
 
 #endif /* HEADER_H */

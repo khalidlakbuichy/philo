@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   geters.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/04 10:26:17 by klakbuic          #+#    #+#             */
+/*   Updated: 2024/06/04 10:59:30 by klakbuic         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../inc/header.h"
+
+time_t	get_last_meal(t_philo *philo)
+{
+	time_t	last_meal;
+
+	pthread_mutex_lock(&philo->philo_mutex);
+	last_meal = philo->last_meal;
+	pthread_mutex_unlock(&philo->philo_mutex);
+	return (last_meal);
+}
+
+t_state	get_philo_state(t_philo *philo)
+{
+	t_state state;
+    
+	pthread_mutex_lock(&philo->philo_mutex);
+	state = philo->state;
+	pthread_mutex_unlock(&philo->philo_mutex);
+	return (state);
+}
+
+bool is_dead(t_philo *philo)
+{
+    bool dead;
+
+    pthread_mutex_lock(&philo->data->dead_mutex);
+    dead = philo->data->dead;
+    pthread_mutex_unlock(&philo->data->dead_mutex);
+    return (dead);
+}

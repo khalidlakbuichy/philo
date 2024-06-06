@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/04 10:59:48 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:09:36 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,13 @@ void					eating(t_philo *philo);
 /* geteres */
 time_t					get_last_meal(t_philo *philo);
 t_state					get_philo_state(t_philo *philo);
+bool					is_dead(t_philo *philo);
+size_t	get_meals(t_philo *philo);
+int	get_philo_id(t_philo *philo);
 /* seteres */
 void					set_last_meal(t_philo *philo, time_t time);
 void					set_state(t_philo *philo, t_state state);
-bool					is_dead(t_philo *philo);
+void	dead(t_philo *philo);
+void	increment_meal(t_philo *philo);
 
 #endif /* HEADER_H */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   geters.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:26:17 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/04 10:59:30 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:39:27 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,29 @@ bool is_dead(t_philo *philo)
     dead = philo->data->dead;
     pthread_mutex_unlock(&philo->data->dead_mutex);
     return (dead);
+}
+
+size_t	get_meals(t_philo *philo)
+{
+	size_t meals;
+
+	pthread_mutex_lock(&philo->philo_mutex);
+	meals = philo->meals;
+	pthread_mutex_unlock(&philo->philo_mutex);
+	return (meals);
+}
+
+int	get_philo_id(t_philo *philo)
+{
+	int id;
+	
+	pthread_mutex_lock(&philo->philo_mutex);
+	id = philo->id;
+	pthread_mutex_unlock(&philo->philo_mutex);
+	return (id);
+}
+
+time_t get_time_to_eat(t_philo *philo)
+{
+	
 }

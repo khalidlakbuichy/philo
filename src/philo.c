@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/04 10:43:59 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:28:28 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	check_meals(t_data *data)
 		return (false);
 	while (i < data->nb_philos)
 	{
-		if (((int)data->philos[i]->meals >= data->max_meals))
+		if (((int)get_meals(data->philos[i]) >= data->max_meals))
 			meals++;
 		i++;
 	}
@@ -56,9 +56,7 @@ bool	dead_philo(t_philo *philo)
 	if (((getcurrtime() - get_last_meal(philo)) > philo->data->time_to_die)
 		&& get_philo_state(philo) != EATING)
 	{
-		pthread_mutex_lock(&philo->data->dead_mutex);
-		philo->data->dead = true;
-		pthread_mutex_unlock(&philo->data->dead_mutex);
+		dead(philo);
 		pthread_mutex_lock(&philo->data->print_mutex);
 		printf("%ld %d %s\n", getcurrtime()
 			- philo->data->start_time, philo->id, DEAD_STAT);

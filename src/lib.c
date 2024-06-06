@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/04 11:10:48 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:07:01 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	ft_isdigit(int c)
 void	free_heap(t_data *data)
 {
 	size_t	i;
-
+	pthread_mutex_t mutex;
 	i = 0;
 	while (i < data->nb_philos)
 	{
-		pthread_mutex_destroy(&data->forks[i]->mutex);
+		// pthread_mutex_destroy(&data->forks[i]->mutex);
 		free(data->forks[i]);
 		i++;
 	}
@@ -64,12 +64,17 @@ void	free_heap(t_data *data)
 		// pthread_mutex_destroy(data->philos[i]->first_fork);
 		// pthread_mutex_destroy(data->philos[i]->second_fork);
 		data->philos[i]->data = NULL;
+		pthread_mutex_lock(&data->dead_mutex);
 		free(data->philos[i]);
+		pthread_mutex_unlock(&data->dead_mutex);
 		i++;
 	}
 	pthread_mutex_unlock(&data->print_mutex);
-	/* destroy print and dead mutesxes !!!*/
+	pthread_mutex_init(&mutex, NULL);
+	pthread_mutex_lock(&mutex);
 	free(data->philos);
 	free(data->forks);
 	free(data);
+	pthread_mutex_unlock(&mutex);
+	/* destroy print and dead mutesxes !!!*/
 }

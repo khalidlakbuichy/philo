@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 18:35:52 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:57:06 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	take_forks(t_philo *philo)
 {
+	puts("takinggngnsgnsjkngjkd forks");
 	if (!is_dead(philo->data))
 	{
 		set_state(philo, TAKEN_FORK);
@@ -84,6 +85,7 @@ void	*sumilation(void *arg)
 		ft_usleep(100);
 	while (!is_dead(philo->data))
 	{
+		printf("bidayaaaaaaaaaaaaaaaaaaaaaaat --------- %d\n", philo->id);
 		// printf("beginning philo id: %d is dead: %d\n", philo->id, is_dead(philo->data));
 		if (is_dead(philo->data))
 			break ;
@@ -102,9 +104,10 @@ void	*sumilation(void *arg)
 		if (is_dead(philo->data))
 			break ;
 		thinking(philo);
-		printf("thinking %d\n", philo->id);	
+		puts("darni rassi btafkir weeeeeeeeeeeeeeee");
 		if (is_dead(philo->data))
 			break ;
+		printf("thinking %d\n", philo->id);	
 		// printf("ending philo id: %d is dead: %d\n", philo->id, is_dead(philo->data));
 	}
 	return (printf("done %d\n", philo->id), NULL);

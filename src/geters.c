@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:26:17 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/06 10:39:27 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:54:48 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ int	get_philo_id(t_philo *philo)
 	return (id);
 }
 
-time_t get_time_to_eat(t_philo *philo)
+time_t get_time_to_eat(t_data *data)
 {
-	
+	time_t time_to_eat;
+
+	pthread_mutex_lock(&data->dead_mutex);
+	time_to_eat = data->time_to_eat;
+	pthread_mutex_unlock(&data->dead_mutex);
+	return (time_to_eat);
 }

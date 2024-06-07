@@ -6,7 +6,7 @@
 #    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 16:06:03 by klakbuic          #+#    #+#              #
-#    Updated: 2024/06/06 09:38:26 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/06/06 10:59:11 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,10 @@ all: $(NAME)
 
 $(OBJSDIR)/%.o: $(SRCSDIR)/%.c
 	@mkdir -p $(OBJSDIR)
-	$(CC) $(CFLAGS) $(DEBUG) -c $< -o $@
+	$(CC) $(CFLAGS) $() -c $< -o $@
 
 $(NAME): $(OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(LIB) $(DEBUG) -I $(HEADER) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIB) $() -I $(HEADER) -o $(NAME)
 
 bonus: $(BONUS)
 

@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 17:00:40 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 18:35:52 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ void	leave_forks(t_philo *philo)
 {
 	if (!is_dead(philo->data))
 	{
-		// pthread_mutex_lock(&philo->philo_mutex);
+		pthread_mutex_lock(&philo->philo_mutex);
 		pthread_mutex_unlock(philo->first_fork);
 		pthread_mutex_unlock(philo->second_fork);
-		// pthread_mutex_unlock(&philo->philo_mutex);
+		pthread_mutex_unlock(&philo->philo_mutex);
 	}
 }
 
@@ -69,9 +69,9 @@ void	eating(t_philo *philo)
 		print_state(philo);
 		increment_meal(philo);
 		ft_usleep(get_time_to_eat(data));
-		leave_forks(philo);
-		// pthread_mutex_unlock(philo->first_fork);
-		// pthread_mutex_unlock(philo->second_fork);
+		// leave_forks(philo);
+		pthread_mutex_unlock(philo->first_fork);
+		pthread_mutex_unlock(philo->second_fork);
 	}
 }
 
@@ -84,22 +84,28 @@ void	*sumilation(void *arg)
 		ft_usleep(100);
 	while (!is_dead(philo->data))
 	{
+		// printf("beginning philo id: %d is dead: %d\n", philo->id, is_dead(philo->data));
 		if (is_dead(philo->data))
 			break ;
 		take_forks(philo);
+		printf("forks %d\n", philo->id);	
 		if (is_dead(philo->data))
 			break ;
 		eating(philo);
-		if ((int)get_meals(philo) == philo->data->max_meals)
-			break ;
+		printf("eating %d\n", philo->id);	
 		if (is_dead(philo->data))
 			break ;
+		if ((int)get_meals(philo) == philo->data->max_meals)
+			break ;
 		sleeping(philo);
+		printf("sleeping %d\n", philo->id);	
 		if (is_dead(philo->data))
 			break ;
 		thinking(philo);
+		printf("thinking %d\n", philo->id);	
 		if (is_dead(philo->data))
 			break ;
+		// printf("ending philo id: %d is dead: %d\n", philo->id, is_dead(philo->data));
 	}
-	return (NULL);
+	return (printf("done %d\n", philo->id), NULL);
 }

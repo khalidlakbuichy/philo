@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 15:43:01 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 16:29:40 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	one_philo(t_data *data)
 	print_state(philo);
 	pthread_mutex_unlock(philo->first_fork);
 	ft_usleep(data->time_to_die);
-	printf(COLOR_RED "\t%ld \t\t%d %s\n" COLOR_RESET, getcurrtime()
-		- data->start_time, philo->id, DEAD_STAT);
+	printf("%ld %d %s\n", getcurrtime() - philo->data->start_time, philo->id,
+		DEAD_STAT);
 }
 
 bool	check_meals(t_data *data)
@@ -60,8 +60,8 @@ bool	dead_philo(t_philo *philo)
 	{
 		dead(philo);
 		pthread_mutex_lock(&philo->data->print_mutex);
-		printf("%ld %d %s\n", getcurrtime()
-			- philo->data->start_time, philo->id, DEAD_STAT);
+		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
+			philo->id, DEAD_STAT);
 		pthread_mutex_unlock(&philo->data->print_mutex);
 		return (true);
 	}
@@ -93,7 +93,7 @@ void	wait_pthread(t_data *data)
 	while (i < data->nb_philos)
 	{
 		pthread_join(data->philos[i]->thread, NULL);
-		printf("Thread %ld joined\n", i);
+		printf("Thmaread %ld joined\n", i);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 16:01:31 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:00:40 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void	*sumilation(void *arg)
 		if (is_dead(philo->data))
 			break ;
 		thinking(philo);
+		if (is_dead(philo->data))
+			break ;
 	}
 	return (NULL);
 }

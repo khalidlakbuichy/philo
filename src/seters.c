@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   seters.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 10:40:26 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/05 15:24:18 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 06:21:45 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	set_state(t_philo *philo, t_state state)
 
 void	dead(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->data->dead_mutex);
+	pthread_mutex_lock(&philo->data->data_mutex);
 	philo->data->dead = true;
-	pthread_mutex_unlock(&philo->data->dead_mutex);
+	pthread_mutex_unlock(&philo->data->data_mutex);
 }
 
 void	increment_meal(t_philo *philo)

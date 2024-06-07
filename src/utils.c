@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 14:58:46 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/05 14:59:38 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 06:49:59 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	print_state(t_philo *philo)
 {
-	if (is_dead(philo))
+	if (is_dead(philo->data))
 		return ;
 	pthread_mutex_lock(&philo->data->print_mutex);
-	if (philo->state == THINKING && !is_dead(philo))
+	if (philo->state == THINKING && !is_dead(philo->data))
 		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
 			philo->id, THINKING_STAT);
-	else if (philo->state == EATING && !is_dead(philo))
+	else if (philo->state == EATING && !is_dead(philo->data))
 		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
 			philo->id, EATING_STAT);
-	else if (philo->state == SLEEPING && !is_dead(philo))
+	else if (philo->state == SLEEPING && !is_dead(philo->data))
 		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
 			philo->id, SLEEPING_STAT);
-	else if (philo->state == TAKEN_FORK && !is_dead(philo))
+	else if (philo->state == TAKEN_FORK && !is_dead(philo->data))
 		printf("%ld %d %s\n", getcurrtime() - philo->data->start_time,
 			philo->id, FORK_TAKEN);
 	pthread_mutex_unlock(&philo->data->print_mutex);

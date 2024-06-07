@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/06 09:28:28 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 15:43:01 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ bool	check_meals(t_data *data)
 	}
 	if (meals == data->nb_philos)
 	{
+		pthread_mutex_lock(&data->data_mutex);
 		data->dead = true;
+		pthread_mutex_unlock(&data->data_mutex);
 		return (true);
 	}
 	return (false);
@@ -91,6 +93,7 @@ void	wait_pthread(t_data *data)
 	while (i < data->nb_philos)
 	{
 		pthread_join(data->philos[i]->thread, NULL);
+		printf("Thread %ld joined\n", i);
 		i++;
 	}
 }

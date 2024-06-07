@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:45:54 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/04 10:31:07 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/07 06:21:45 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ t_data	*init(int ac, char **av)
 	data->philos = init_philos(data);
 	data->dead = false;
 	pthread_mutex_init(&data->print_mutex, NULL);
-	pthread_mutex_init(&data->dead_mutex, NULL);
+	pthread_mutex_init(&data->data_mutex, NULL);
 	return (data);
 }

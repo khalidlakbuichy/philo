@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 16:22:03 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 17:01:50 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 08:52:30 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ time_t	get_time_to_sleep(t_data *data)
 
 time_t	get_time_to_die(t_data *data)
 {
-	time_t time_to_die;
+	time_t	time_to_die;
 
 	pthread_mutex_lock(&data->data_mutex);
 	time_to_die = data->time_to_die;

@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:21:06 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 06:48:12 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 08:59:48 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ struct					s_philo
 };
 
 /* Prototypes */
+/* Parssing */
 int						parsing_input(int ac, char **av);
 size_t					ft_strlen(char *str);
 void					ft_error(char *msg);
@@ -100,9 +101,11 @@ int						ft_atoi(const char *str);
 t_data					*init(int ac, char **av);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 int						ft_isdigit(int c);
+/* Utils */
 time_t					getcurrtime(void);
 void					ft_usleep(time_t micro_sec);
 void					print_state(t_philo *philo);
+/* Simulation */
 void					*sumilation(void *arg);
 void					start_simulation(t_data *data);
 void					free_heap(t_data *data);
@@ -113,7 +116,8 @@ void					wait_pthread(t_data *data);
 void					sleeping(t_philo *philo);
 void					thinking(t_philo *philo);
 void					eating(t_philo *philo);
-
+void					take_forks(t_philo *philo);
+bool					leave_forks(t_philo *philo);
 /* geteres */
 t_state					get_philo_state(t_philo *philo);
 bool					is_dead(t_data *data);
@@ -123,7 +127,6 @@ time_t					get_last_meal(t_philo *philo);
 time_t					get_time_to_eat(t_data *data);
 time_t					get_time_to_sleep(t_data *data);
 time_t					get_time_to_die(t_data *data);
-
 /* seteres */
 void					set_last_meal(t_philo *philo, time_t time);
 void					set_state(t_philo *philo, t_state state);

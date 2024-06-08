@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/08 07:29:58 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 08:31:39 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 		if (parsing_input(ac, av) == ERROR)
 			return (EXIT_FAILURE);
 		data = init(ac, av);
-		if (!data)
+		if (!data || data->max_meals == 0)
 			return (EXIT_FAILURE);
 		if (data->nb_philos == 1)
 		{
@@ -35,9 +35,7 @@ int	main(int ac, char **av)
 		}
 		start_simulation(data);
 		check_dead_philo(data);
-		// printf("Simulation ended\n");
 		wait_pthread(data);
-		// printf("Threads joined\n");
 		free_heap(data);
 	}
 }

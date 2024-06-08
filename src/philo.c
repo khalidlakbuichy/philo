@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 09:33:11 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/08 07:30:03 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 08:57:43 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	wait_pthread(t_data *data)
 	while (i < data->nb_philos)
 	{
 		pthread_join(data->philos[i]->thread, NULL);
-		// printf("Thmaread %ld joined\n", i);
 		i++;
 	}
 }

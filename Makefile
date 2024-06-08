@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+         #
+#    By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/20 16:06:03 by klakbuic          #+#    #+#              #
-#    Updated: 2024/06/08 09:05:39 by klakbuic         ###   ########.fr        #
+#    Updated: 2024/06/08 09:28:25 by klakbuic         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ BONUS        = checker
 HEADER       = /inc/header.h
 
 CC           = cc
-CFLAGS       = -Wall -Wextra -Werror
+CFLAGS       = -Wall -Wextra -Werror -g3
 DEBUG        = -g3 -fsanitize=thread
 
 SRCSDIR      = src

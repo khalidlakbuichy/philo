@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/08 09:00:15 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 09:29:30 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	*sumilation(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	if (philo->id % 2)
-		ft_usleep(50);
 	while (!is_dead(philo->data))
 	{
 		if (is_dead(philo->data))

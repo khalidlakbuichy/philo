@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 12:22:09 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 18:57:06 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 07:29:21 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,24 @@
 
 void	take_forks(t_philo *philo)
 {
-	puts("takinggngnsgnsjkngjkd forks");
 	if (!is_dead(philo->data))
 	{
 		set_state(philo, TAKEN_FORK);
 		pthread_mutex_lock(philo->first_fork);
-		print_state(philo);
 		pthread_mutex_lock(philo->second_fork);
+		print_state(philo);
 		print_state(philo);
 	}
 }
 
-void	leave_forks(t_philo *philo)
+bool	leave_forks(t_philo *philo)
 {
-	if (!is_dead(philo->data))
-	{
-		pthread_mutex_lock(&philo->philo_mutex);
+
+		// pthread_mutex_lock(&philo->philo_mutex);
 		pthread_mutex_unlock(philo->first_fork);
 		pthread_mutex_unlock(philo->second_fork);
-		pthread_mutex_unlock(&philo->philo_mutex);
-	}
+		return(true);
+		// pthread_mutex_unlock(&philo->philo_mutex);
 }
 
 void	thinking(t_philo *philo)
@@ -70,45 +68,48 @@ void	eating(t_philo *philo)
 		print_state(philo);
 		increment_meal(philo);
 		ft_usleep(get_time_to_eat(data));
-		// leave_forks(philo);
-		pthread_mutex_unlock(philo->first_fork);
-		pthread_mutex_unlock(philo->second_fork);
+		leave_forks(philo);
+		// pthread_mutex_unlock(philo->first_fork);
+		// pthread_mutex_unlock(philo->second_fork);
 	}
 }
 
 void	*sumilation(void *arg)
 {
 	t_philo	*philo;
-
+	size_t max_meals;
+	
+	max_meals = 0;
 	philo = (t_philo *)arg;
 	if (philo->id % 2)
-		ft_usleep(100);
+		ft_usleep(50);
 	while (!is_dead(philo->data))
 	{
-		printf("bidayaaaaaaaaaaaaaaaaaaaaaaat --------- %d\n", philo->id);
+		// printf("bidayaaaaaaaaaaaaaaaaaaaaaaat --------- %d\n", philo->id);
 		// printf("beginning philo id: %d is dead: %d\n", philo->id, is_dead(philo->data));
 		if (is_dead(philo->data))
 			break ;
+		// printf("9abllllllll forrrrrks %d\n", philo->id);
 		take_forks(philo);
-		printf("forks %d\n", philo->id);	
-		if (is_dead(philo->data))
+		// printf("forks %d\n", philo->id);	
+		if (is_dead(philo->data) && leave_forks(philo))
 			break ;
 		eating(philo);
-		printf("eating %d\n", philo->id);	
+		// printf("eating %d\n", philo->id);	
 		if (is_dead(philo->data))
 			break ;
 		if ((int)get_meals(philo) == philo->data->max_meals)
 			break ;
 		sleeping(philo);
-		printf("sleeping %d\n", philo->id);	
+		// printf("sleeping %d\n", philo->id);	
 		if (is_dead(philo->data))
 			break ;
 		thinking(philo);
-		puts("darni rassi btafkir weeeeeeeeeeeeeeee");
+		// puts("darni rassi btafkir weeeeeeeeeeeeeeee");
 		if (is_dead(philo->data))
 			break ;
-		printf("thinking %d\n", philo->id);	
+		// printf("thinking %d\n", philo->id);	
 		// printf("ending philo id: %d is dead: %d\n", philo->id, is_dead(philo->data));
 	}
-	return (printf("done %d\n", philo->id), NULL);
+	return (NULL);
 }

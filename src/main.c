@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: klakbuic <klakbuic@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:24:44 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/07 16:29:54 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 07:29:58 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	main(int ac, char **av)
 		}
 		start_simulation(data);
 		check_dead_philo(data);
-		printf("Simulation ended\n");
+		// printf("Simulation ended\n");
 		wait_pthread(data);
-		printf("Threads joined\n");
+		// printf("Threads joined\n");
 		free_heap(data);
 	}
 }

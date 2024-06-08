@@ -6,7 +6,7 @@
 /*   By: klakbuic <klakbuic@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:31:25 by klakbuic          #+#    #+#             */
-/*   Updated: 2024/06/08 08:57:31 by klakbuic         ###   ########.fr       */
+/*   Updated: 2024/06/08 09:40:50 by klakbuic         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	free_heap(t_data *data)
 	pthread_mutex_t	mutex;
 
 	i = 0;
+	pthread_mutex_init(&mutex, NULL);
 	pthread_mutex_lock(&data->data_mutex);
 	while (i < data->nb_philos)
 	{
